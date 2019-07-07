@@ -15,28 +15,45 @@ const setup = (anotherProps = {}) => {
         instance: wrapper.instance(),
         name: wrapper.find(getDataTestSelector('name')),
         type: wrapper.find(getDataTestSelector('type')),
-        bulk: wrapper.find(getDataTestSelector('bulk')),
+        hasBulk: wrapper.find(getDataTestSelector('has-bulk')),
+        hasntBulk: wrapper.find(getDataTestSelector('hasnt-bulk')),
         retail: wrapper.find(getDataTestSelector('retail')),
     };
 };
 
 describe('Product', () => {
+    const basicProduct = {
+        "name": "OG Kush",
+        "descripton": "This is a test description",
+        "type": "Indica",
+        "hasBulk": false,
+        "hasRetail": false,
+        "batchNumber": 12,
+        "lotId": 10
+    }
     describe('basic render', () => {
-        const productValue = {
-            "name": "OG Kush",
-            "descripton": "This is a test description",
-            "type": "Indica",
-            "hasBulk": true,
-            "hasRetail": true,
-            "batchNumber": 12,
-            "lotId": 10
-        }
-        const { name, type, bulk, retail } = setup(productValue)
+        const { name, type } = setup(basicProduct)
         it('render the product name', () => {
-            expect(name.text()).toEqual(productValue.name)
+            expect(name.text()).toEqual(basicProduct.name)
         })
         it('render the product type', () => {
-            expect(type.text()).toEqual(productValue.type)
+            expect(type.text()).toEqual(basicProduct.type)
+        })
+    })
+    describe('if the product has bulk', () => {
+        const productValue = { ...basicProduct };
+        productValue.hasBulk = true;
+        const { hasBulk } = setup(productValue)
+        it('render the icon of bulk', () => {
+            expect(hasBulk).toHaveLength(1)
+        })
+    })
+    describe('if the product hasnt bulk', () => {
+        const productValue = { ...basicProduct };
+        productValue.hasBulk = false;
+        const { hasntBulk } = setup(productValue)
+        it('render the icon of no bulk', () => {
+            expect(hasntBulk).toHaveLength(1)
         })
     })
 })

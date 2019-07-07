@@ -5,6 +5,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import CheckCircle from '@material-ui/icons/CheckCircle';
+import HighlightOff from '@material-ui/icons/HighlightOff';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -23,10 +25,13 @@ const useStyles = makeStyles(theme => ({
     cardContent: {
         flexGrow: 1,
     },
+    bulk:{
+        display:"flex"
+    }
 
 }));
 const Product = (props) => {
-    const { name, type } = props
+    const { name, type, hasBulk } = props
     const classes = useStyles();
     return (
         <Grid item xs={12} sm={6} md={4}>
@@ -44,6 +49,10 @@ const Product = (props) => {
                         <Typography data-test="type">
                             {type}
                         </Typography>
+                        <Typography className={classes.bulk}>
+                            Bulk  {hasBulk ? <CheckCircle data-test="has-bulk" /> : <HighlightOff data-test="hasnt-bulk" />}
+                        </Typography>
+
                     </div>
 
                 </CardContent>
