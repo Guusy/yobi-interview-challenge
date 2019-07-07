@@ -1,4 +1,3 @@
-import React from 'react';
 import setProductsAction from './setProductsAction';
 
 const mockedStore = {

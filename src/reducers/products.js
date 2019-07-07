@@ -1,10 +1,4 @@
-import * as a from '../actions/products';
-
-const INITIAL_STATE = {
-    products: [],
-    isProcessing: false,
-}
-
+/* import * as a from '../actions/products';
 export default function productsReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         /*case a.GET_PRODUCTS_REQUEST: {
@@ -21,8 +15,9 @@ export default function productsReducer(state = INITIAL_STATE, action) {
             // Handle action
             break;
         }
-        */
+
         default:
             return state;
     }
 }
+ */

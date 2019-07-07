@@ -72,7 +72,8 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.8.0",
-    "jest-enzyme": "^7.0.2"
+    "jest-enzyme": "^7.0.2",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -94,6 +95,7 @@
     ]
   },
   "jest": {
+    "verbose": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"

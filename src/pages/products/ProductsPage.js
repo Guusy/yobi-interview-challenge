@@ -1,20 +1,4 @@
-/* import React, { useEffect } from 'react';
-
-import ProductsContainer from '../containers/Products';
-
-const Products = (props) => {
-    const { getProducts } = props
-    useEffect(() => {
-        getProducts();
-    }, [])
-    return (
-        <div>Show your list here</div>
-    );
-}
-
-export default Products;
- */
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 
@@ -24,7 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import ProductsService from '../../services/ProductsService';
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -48,9 +32,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function Album() {
+export default function ProductsPage(props) {
     const classes = useStyles();
+    const { getProducts } = props
 
+    useEffect(() => {
+        getProducts()
+    }, [])
     return (
         <React.Fragment>
             <CssBaseline />

@@ -1,19 +1,12 @@
 import { fork, take, call, takeEvery, put } from 'redux-saga/effects';
-import axios from 'axios'
-// This is an example function of how we use our sagas to
-// make HTTP requests and handle actions.
+import ProductsService from './services/ProductsService';
+import { setProducts, startFetching } from './actions'
+export function* getProducts() {
+    yield put(startFetching);
 
-function fetchProductsApi() {
-    return axios.get('https://yobi-interview-api.herokuapp.com/products')
-        .then(response => ({ response }))
-        .catch(error => ({ error }))
-}
-export function* exampleSaga() {
-    const { response, error } = yield call(fetchProductsApi);
-
+    const { response, error } = yield call(ProductsService.getProducts);
     if (response) {
-        console.log(response.data)
-        yield put({ type: "_" });
+        yield put(setProducts(response.data));
     } else {
         console.log("error", error)
         // yield put(someErrorResponseActionHere());
@@ -22,6 +15,6 @@ export function* exampleSaga() {
 }
 
 export default function* rootSaga() {
-    yield takeEvery("GET_PRODUCTS_REQUEST", exampleSaga);
+    yield takeEvery("GET_PRODUCTS_REQUEST", getProducts);
 
 }

@@ -1,10 +1,7 @@
-import { combineReducers } from 'redux';
-import productsReducer from './products';
 
-export const appReducer = combineReducers({
-    products: productsReducer,
-});
+const INITIAL_STATE = {
+    products: [],
+    isFetching: false,
+}
 
-export default (state, action) => {
-    return appReducer(state, action);
-};
+export default (state = INITIAL_STATE, { reducer = defaultState => defaultState }) => reducer(state);
