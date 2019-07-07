@@ -19,6 +19,7 @@ const setup = (anotherProps = {}) => {
         hasntBulk: wrapper.find(getDataTestSelector('hasnt-bulk')),
         hasRetail: wrapper.find(getDataTestSelector('has-retail')),
         hasntRetail: wrapper.find(getDataTestSelector('hasnt-retail')),
+        removeButton: wrapper.find(getDataTestSelector('remove-button')),
     };
 };
 
@@ -71,6 +72,16 @@ describe('Product', () => {
         const { hasntRetail } = setup(productValue)
         it('render the icon of no retail', () => {
             expect(hasntRetail).toHaveLength(1)
+        })
+    })
+    describe('when click at remove button', () => {
+        const onRemoveProductSpy = jest.fn();
+        const { removeButton } = setup({ ...basicProduct, onRemoveProduct: onRemoveProductSpy })
+        beforeAll(() => {
+            removeButton.simulate('click')
+        })
+        it('call onRemoveProduct with the id', () => {
+            expect(onRemoveProductSpy).toBeCalledWith(basicProduct.lotId)
         })
     })
 })

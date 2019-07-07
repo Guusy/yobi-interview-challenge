@@ -33,8 +33,10 @@ const useStyles = makeStyles(theme => ({
 const Product = (props) => {
 
     const classes = useStyles();
-    const { name, type, hasBulk, hasRetail } = props
-
+    const { name, type, hasBulk, hasRetail,onRemoveProduct,lotId } = props
+    const onRemoveHandler = () => {
+        onRemoveProduct(lotId)
+    }
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
@@ -62,12 +64,10 @@ const Product = (props) => {
 
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="primary">
-                        View
+                    <Button size="small" color="secondary" data-test="remove-button" onClick={onRemoveHandler}>
+                        Remove
                     </Button>
-                    <Button size="small" color="primary">
-                        Edit
-                    </Button>
+
                 </CardActions>
             </Card>
         </Grid>
