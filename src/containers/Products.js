@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Products from '../components/Products';
+import Products from '../pages/products/ProductsPage';
 
 const mapStateToProps = () => {
     // Define connection properties
