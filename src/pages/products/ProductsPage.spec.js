@@ -14,10 +14,18 @@ const setup = (anotherProps = {}) => {
         wrapper,
         instance: wrapper.instance(),
         spinner: wrapper.find('[data-test="spinner"]'),
+        product: wrapper.find('Product'),
     };
 };
 
 describe('ProductsPage', () => {
+
+    describe('when pass products props', () => {
+        const { product } = setup({ products: [{ id: 0 }, { id: 1 }] })
+        it('render its', () => {
+            expect(product).toHaveLength(2);
+        })
+    })
 
     describe('when pass isFetching as true', () => {
         const { spinner } = setup({ isFetching: true })

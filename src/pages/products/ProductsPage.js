@@ -10,6 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import ProductsService from '../../services/ProductsService';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Product from './components/product/Product';
+import propTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -33,9 +35,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function ProductsPage(props) {
+function ProductsPage(props) {
     const classes = useStyles();
-    const { getProducts, isFetching } = props
+    const { getProducts, isFetching, products } = props
 
     useEffect(() => {
         getProducts()
@@ -75,7 +77,9 @@ export default function ProductsPage(props) {
                 </div>
                 <Container className={classes.cardGrid} maxWidth="md">
                     <Grid container spacing={4}>
-                        {/* products */}
+
+                        {products.map(product => <Product key={product.id} {...product} />)}
+
                         {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
 
                     </Grid>
@@ -95,3 +99,11 @@ export default function ProductsPage(props) {
         </React.Fragment>
     );
 }
+
+ProductsPage.defaultProps = {
+    products: []
+}
+ProductsPage.propTypes = {
+    products: propTypes.arrayOf(propTypes.shape({}))
+}
+export default ProductsPage

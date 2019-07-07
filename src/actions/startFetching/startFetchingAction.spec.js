@@ -7,5 +7,8 @@ describe('startFetchingAction', () => {
         const result = startFetchingAction.reducer(mockedStore)
         expect(result.isFetching).toBe(true)
     })
+    it('the type is "START_FETCHING"', () => {
+        expect(startFetchingAction.type).toEqual("START_FETCHING")
+    })
 })
 
