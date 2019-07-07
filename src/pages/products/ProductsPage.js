@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import ProductsService from '../../services/ProductsService';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function ProductsPage(props) {
     const classes = useStyles();
-    const { getProducts } = props
+    const { getProducts, isFetching } = props
 
     useEffect(() => {
         getProducts()
@@ -66,7 +67,7 @@ export default function ProductsPage(props) {
                                 <Grid item>
                                     <Button variant="outlined" color="primary">
                                         Secondary action
-                  </Button>
+                         </Button>
                                 </Grid>
                             </Grid>
                         </div>
@@ -75,7 +76,10 @@ export default function ProductsPage(props) {
                 <Container className={classes.cardGrid} maxWidth="md">
                     <Grid container spacing={4}>
                         {/* products */}
+                        {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
+
                     </Grid>
+
                 </Container>
             </main>
             {/* Footer */}

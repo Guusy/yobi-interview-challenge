@@ -4,11 +4,11 @@ import { setProducts, startFetching } from './actions'
 export function* getProducts() {
     yield put(startFetching);
 
-    const { response, error } = yield call(ProductsService.getProducts);
+    const response = yield call(ProductsService.getProducts);
     if (response) {
         yield put(setProducts(response.data));
     } else {
-        console.log("error", error)
+        // console.log("error", error)
         // yield put(someErrorResponseActionHere());
     }
 

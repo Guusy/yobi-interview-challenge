@@ -3,9 +3,11 @@ import { bindActionCreators } from 'redux';
 
 import Products from '../pages/products/ProductsPage';
 
-const mapStateToProps = () => {
-    // Define connection properties
-    return {};
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        isFetching: state.isFetching
+    };
 };
 
 export function mapDispatchToProps(dispatch) {
