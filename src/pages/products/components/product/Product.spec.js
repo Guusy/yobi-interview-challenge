@@ -17,7 +17,8 @@ const setup = (anotherProps = {}) => {
         type: wrapper.find(getDataTestSelector('type')),
         hasBulk: wrapper.find(getDataTestSelector('has-bulk')),
         hasntBulk: wrapper.find(getDataTestSelector('hasnt-bulk')),
-        retail: wrapper.find(getDataTestSelector('retail')),
+        hasRetail: wrapper.find(getDataTestSelector('has-retail')),
+        hasntRetail: wrapper.find(getDataTestSelector('hasnt-retail')),
     };
 };
 
@@ -54,6 +55,22 @@ describe('Product', () => {
         const { hasntBulk } = setup(productValue)
         it('render the icon of no bulk', () => {
             expect(hasntBulk).toHaveLength(1)
+        })
+    })
+    describe('if the product has retail', () => {
+        const productValue = { ...basicProduct };
+        productValue.hasRetail = true;
+        const { hasRetail } = setup(productValue)
+        it('render the icon of retail ok', () => {
+            expect(hasRetail).toHaveLength(1)
+        })
+    })
+    describe('if the product hasnt retail', () => {
+        const productValue = { ...basicProduct };
+        productValue.hasRetail = false;
+        const { hasntRetail } = setup(productValue)
+        it('render the icon of no retail', () => {
+            expect(hasntRetail).toHaveLength(1)
         })
     })
 })

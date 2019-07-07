@@ -25,14 +25,16 @@ const useStyles = makeStyles(theme => ({
     cardContent: {
         flexGrow: 1,
     },
-    bulk:{
-        display:"flex"
+    bulk: {
+        display: "flex"
     }
 
 }));
 const Product = (props) => {
-    const { name, type, hasBulk } = props
+
     const classes = useStyles();
+    const { name, type, hasBulk, hasRetail } = props
+
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
@@ -51,6 +53,9 @@ const Product = (props) => {
                         </Typography>
                         <Typography className={classes.bulk}>
                             Bulk  {hasBulk ? <CheckCircle data-test="has-bulk" /> : <HighlightOff data-test="hasnt-bulk" />}
+                        </Typography>
+                        <Typography className={classes.retail}>
+                            Retail  {hasRetail ? <CheckCircle data-test="has-retail" /> : <HighlightOff data-test="hasnt-retail" />}
                         </Typography>
 
                     </div>
