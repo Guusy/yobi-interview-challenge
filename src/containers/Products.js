@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import Products from '../pages/products/ProductsPage';
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         isFetching: state.isFetching,
         products: state.products
