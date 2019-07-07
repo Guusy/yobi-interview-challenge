@@ -10,9 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import ProductsService from '../../services/ProductsService';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Product from './components/product/Product';
+import Product from './components/product/ProductContainer';
 import propTypes from 'prop-types';
-
 const useStyles = makeStyles(theme => ({
     icon: {
         marginRight: theme.spacing(2),
@@ -78,7 +77,7 @@ function ProductsPage(props) {
                 <Container className={classes.cardGrid} maxWidth="md">
                     <Grid container spacing={4}>
 
-                        {products.map(product => <Product key={product.id} {...product} />)}
+                        {products.map(product => <Product key={product.lotId} {...product} />)}
 
                         {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
 
