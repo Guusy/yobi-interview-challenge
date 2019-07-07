@@ -35,6 +35,9 @@ describe('Product', () => {
         it('render the product name', () => {
             expect(name.text()).toEqual(productValue.name)
         })
+        it('render the product type', () => {
+            expect(type.text()).toEqual(productValue.type)
+        })
     })
 })
 

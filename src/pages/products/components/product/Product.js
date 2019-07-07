@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 const Product = (props) => {
-    const { name } = props
+    const { name, type } = props
     const classes = useStyles();
     return (
         <Grid item xs={12} sm={6} md={4}>
@@ -40,9 +40,12 @@ const Product = (props) => {
                     <Typography data-test="name" gutterBottom variant="h5" component="h2">
                         {name}
                     </Typography>
-                    <Typography>
-                        This is a media card. You can use this section to describe the content.
-                    </Typography>
+                    <div>
+                        <Typography data-test="type">
+                            {type}
+                        </Typography>
+                    </div>
+
                 </CardContent>
                 <CardActions>
                     <Button size="small" color="primary">
