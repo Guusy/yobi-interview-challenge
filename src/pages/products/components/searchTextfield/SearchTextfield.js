@@ -4,11 +4,11 @@ import Search from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
 
 const SearchTextfield = (props) => {
-    const { onChange, value } = props;
-    const onChangeHandler = ({ target: { value } }) => {
-        onChange(value)
-    }
-    return <Grid container spacing={1} alignItems="flex-end">
+  const { onChange, value } = props;
+  const onChangeHandler = ({ target: { value } }) => {
+    onChange(value);
+  };
+  return <Grid container spacing={1} alignItems="flex-end">
         <Grid item>
             <Search />
         </Grid>
@@ -24,7 +24,7 @@ const SearchTextfield = (props) => {
                 />
             </form>
         </Grid>
-    </Grid>
-}
+    </Grid>;
+};
 
 export default SearchTextfield;

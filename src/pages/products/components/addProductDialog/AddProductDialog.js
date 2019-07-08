@@ -8,27 +8,27 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-const isEmpty = value => value.length === 0
+const isEmpty = value => value.length === 0;
 export default function AddProductDialog(props) {
-    const { open, onClose, onAddProduct } = props;
-    const [values, setValues] = useState({
-        name: '',
-        type: '',
-        lotId: '',
-        hasBulk: false,
-        hasRetail: false
-    })
+  const { open, onClose, onAddProduct } = props;
+  const [values, setValues] = useState({
+    name: '',
+    type: '',
+    lotId: '',
+    hasBulk: false,
+    hasRetail: false
+  });
 
-    const onChangeInputHandler = ({ target: { value, id } }) => {
-        setValues({ ...values, [id]: value })
-    }
-    const onConfirm = () => {
-        onAddProduct(values)
-    }
-    const handleChange = ({ target: { checked, id } }) => {
-        setValues({ ...values, [id]: checked });
-    };
-    return (
+  const onChangeInputHandler = ({ target: { value, id } }) => {
+    setValues({ ...values, [id]: value });
+  };
+  const onConfirm = () => {
+    onAddProduct(values);
+  };
+  const handleChange = ({ target: { checked, id } }) => {
+    setValues({ ...values, [id]: checked });
+  };
+  return (
 
         <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Add product</DialogTitle>
@@ -104,5 +104,5 @@ export default function AddProductDialog(props) {
           </Button>
             </DialogActions>
         </Dialog>
-    );
+  );
 }

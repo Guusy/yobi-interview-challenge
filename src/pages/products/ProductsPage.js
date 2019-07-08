@@ -9,55 +9,58 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Product from './components/product/ProductContainer';
 import propTypes from 'prop-types';
+import Product from './components/product/ProductContainer';
 import SearchTextfield from './components/searchTextfield/SearchTextfieldContainer';
-import SelectSort from './components/selectSort/SelectSortContainer'
-import AddProductDialog from './components/addProductDialog/AddProductDialog'
+import SelectSort from './components/selectSort/SelectSortContainer';
+import AddProductDialog from './components/addProductDialog/AddProductDialog';
+
 const useStyles = makeStyles(theme => ({
-    icon: {
-        marginRight: theme.spacing(2),
-    },
-    heroContent: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
-    },
-    heroButtons: {
-        marginTop: theme.spacing(4),
-    },
-    cardGrid: {
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
-    },
-    cardGridContainer: {
-        display: "flex",
-        justifyContent: "center"
-    },
-    footer: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(6),
-    },
+  icon: {
+    marginRight: theme.spacing(2),
+  },
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
+  heroButtons: {
+    marginTop: theme.spacing(4),
+  },
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  cardGridContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(6),
+  },
 }));
 
 
 function ProductsPage(props) {
-    const classes = useStyles();
-    const { getProducts, isFetching, products, message, addProduct } = props
-    const [addProductDialogOpen, setAddProductDialogOpen] = useState(false)
-    useEffect(() => {
-        getProducts()
-    }, [])
-    const onAddProductHandler = (product) => {
-        closeAddProduct();
-        addProduct(product)
-    }
-    const onClickAddProduct = () => {
-        setAddProductDialogOpen(true)
-    }
-    const closeAddProduct = () => {
-        setAddProductDialogOpen(false)
-    }
-    return (
+  const classes = useStyles();
+  const {
+    getProducts, isFetching, products, message, addProduct
+  } = props;
+  const [addProductDialogOpen, setAddProductDialogOpen] = useState(false);
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const onAddProductHandler = (product) => {
+    closeAddProduct();
+    addProduct(product);
+  };
+  const onClickAddProduct = () => {
+    setAddProductDialogOpen(true);
+  };
+  const closeAddProduct = () => {
+    setAddProductDialogOpen(false);
+  };
+  return (
         <React.Fragment>
             <CssBaseline />
             <AppBar position="relative">
@@ -98,8 +101,8 @@ function ProductsPage(props) {
                         {products.map(product => <Product key={product.lotId} {...product} />)}
 
                         {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
-                        {message &&
-                            <Typography align="center" color="textPrimary" data-test="message">
+                        {message
+                            && <Typography align="center" color="textPrimary" data-test="message">
                                 {message.value}
                             </Typography>
                         }
@@ -109,13 +112,13 @@ function ProductsPage(props) {
             </main>
             <AddProductDialog open={addProductDialogOpen} onClose={closeAddProduct} onAddProduct={onAddProductHandler} />
         </React.Fragment>
-    );
+  );
 }
 
 ProductsPage.defaultProps = {
-    products: []
-}
+  products: []
+};
 ProductsPage.propTypes = {
-    products: propTypes.arrayOf(propTypes.shape({}))
-}
-export default ProductsPage
+  products: propTypes.arrayOf(propTypes.shape({}))
+};
+export default ProductsPage;

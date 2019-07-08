@@ -26,7 +26,6 @@
     "eslint-plugin-flowtype": "2.50.1",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-jsx-a11y": "6.2.1",
-    "eslint-plugin-react": "7.12.4",
     "eslint-plugin-react-hooks": "^1.5.0",
     "file-loader": "3.0.1",
     "fs-extra": "7.0.1",
@@ -72,6 +71,9 @@
     "babel-jest": "^24.8.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-jest": "^22.7.2",
+    "eslint-plugin-react": "^7.12.4",
     "jest": "^24.8.0",
     "jest-enzyme": "^7.0.2",
     "redux-devtools-extension": "^2.13.8"
@@ -81,7 +83,8 @@
     "build": "node scripts/build.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "jest:init": "jest --init"
+    "jest:init": "jest --init",
+    "lint": "eslint ./src/**"
   },
   "browserslist": {
     "production": [

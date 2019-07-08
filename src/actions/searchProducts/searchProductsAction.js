@@ -1,4 +1,4 @@
-export default (searchValue) => ({
-    type: "SEARCH_PRODUCTS",
-    reducer: (state) => ({ ...state,  searchValue })
-})
+export default searchValue => ({
+  type: 'SEARCH_PRODUCTS',
+  reducer: state => ({ ...state, searchValue })
+});

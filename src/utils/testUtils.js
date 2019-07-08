@@ -1,3 +1,4 @@
-const getDataTestSelector = (value) => `[data-test="${value}"]`
+const getDataTestSelector = value => `[data-test="${value}"]`;
 
-export { getDataTestSelector }
+// eslint-disable-next-line import/prefer-default-export
+export { getDataTestSelector };

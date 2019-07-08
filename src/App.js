@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { Provider } from 'react-redux';
+import {
+  HashRouter,
+  Route,
+} from 'react-router-dom';
 import rootSaga from './sagas';
 import configureStore from './store';
 
 import Products from './containers/Products';
 
-import {
-  HashRouter,
-  Route,
-} from 'react-router-dom';
 
 const { store } = configureStore(
   window.__INITIAL_STATE__,

@@ -14,30 +14,31 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles(theme => ({
-    card: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    cardMedia: {
-        paddingTop: '56.25%', // 16:9
-    },
-    cardContent: {
-        flexGrow: 1,
-    },
-    bulk: {
-        display: "flex"
-    }
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
+  },
+  bulk: {
+    display: 'flex'
+  }
 
 }));
 const Product = (props) => {
-
-    const classes = useStyles();
-    const { name, type, hasBulk, hasRetail, onRemoveProduct, lotId } = props
-    const onRemoveHandler = () => {
-        onRemoveProduct(lotId)
-    }
-    return (
+  const classes = useStyles();
+  const {
+    name, type, hasBulk, hasRetail, onRemoveProduct, lotId
+  } = props;
+  const onRemoveHandler = () => {
+    onRemoveProduct(lotId);
+  };
+  return (
         <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
                 {/* <CardMedia
@@ -71,7 +72,6 @@ const Product = (props) => {
                 </CardActions>
             </Card>
         </Grid>
-    )
-}
+  );
+};
 export default Product;
-
