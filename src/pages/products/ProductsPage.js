@@ -13,7 +13,7 @@ import Product from './components/product/ProductContainer';
 import propTypes from 'prop-types';
 import SearchTextfield from './components/searchTextfield/SearchTextfieldContainer';
 import SelectSort from './components/selectSort/SelectSortContainer'
-
+import AddProductDialog from './components/addProductDialog/AddProductDialog'
 const useStyles = makeStyles(theme => ({
     icon: {
         marginRight: theme.spacing(2),
@@ -107,7 +107,7 @@ function ProductsPage(props) {
                     Something here to give the footer a purpose!
         </Typography>
             </footer>
-            {/* End footer */}
+            <AddProductDialog />
         </React.Fragment>
     );
 }

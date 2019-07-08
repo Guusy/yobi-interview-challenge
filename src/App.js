@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import rootSaga from './sagas';
 import configureStore from './store';
 
-import Home from './components/Home';
 import Products from './containers/Products';
 
 import {
@@ -24,7 +23,6 @@ class App extends Component {
       <Provider store={store}>
         <HashRouter>
           <div>
-            {/*   <Route exact path="/" component={Home} /> */}
             <Route exact path="/" component={Products} />
           </div>
         </HashRouter>
