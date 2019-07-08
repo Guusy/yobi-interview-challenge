@@ -3,18 +3,27 @@
 ## Running the application
 
 ```bash
+$ npm i
 $ npm run start
 ```
 
 ## Running test
 
+Unit:
+
 ```bash
 $ npm run test
 ```
 
+e2e:
+
+```bash
+$ npm run test:e2e
+```
+
 # Challenge information
 
-## Configuration information
+## Configuration
 
 We've provided redux, react-router, and redux-saga to the project. You'll use these packages to complete the questions below.
 

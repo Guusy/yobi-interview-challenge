@@ -67,6 +67,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
+    "cypress": "^3.3.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
@@ -83,7 +84,9 @@
     "build": "node scripts/build.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "jest:init": "jest --init"
+    "jest:init": "jest --init",
+    "cypress": "cypress open",
+    "test:e2e": "cypress run"
   },
   "browserslist": {
     "production": [
