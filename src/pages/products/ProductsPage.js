@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 
@@ -42,11 +42,21 @@ const useStyles = makeStyles(theme => ({
 
 function ProductsPage(props) {
     const classes = useStyles();
-    const { getProducts, isFetching, products, message } = props
-
+    const { getProducts, isFetching, products, message, addProduct } = props
+    const [addProductDialogOpen, setAddProductDialogOpen] = useState(false)
     useEffect(() => {
         getProducts()
     }, [])
+    const onAddProductHandler = (product) => {
+        closeAddProduct();
+        addProduct(product)
+    }
+    const onClickAddProduct = () => {
+        setAddProductDialogOpen(true)
+    }
+    const closeAddProduct = () => {
+        setAddProductDialogOpen(false)
+    }
     return (
         <React.Fragment>
             <CssBaseline />
@@ -58,7 +68,6 @@ function ProductsPage(props) {
                 </Toolbar>
             </AppBar>
             <main>
-                {/* Hero unit */}
                 <div className={classes.heroContent}>
                     <Container maxWidth="sm">
                         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
@@ -67,8 +76,8 @@ function ProductsPage(props) {
                         <div className={classes.heroButtons}>
                             <Grid container spacing={2} justify="center">
                                 <Grid item>
-                                    <Button variant="contained" color="primary">
-                                        Add item
+                                    <Button variant="contained" color="primary" data-test="add-product-button" onClick={onClickAddProduct}>
+                                        Add product
                   </Button>
                                 </Grid>
                                 <Grid item>
@@ -98,16 +107,7 @@ function ProductsPage(props) {
 
                 </Container>
             </main>
-            {/* Footer */}
-            <footer className={classes.footer}>
-                <Typography variant="h6" align="center" gutterBottom>
-                    Footer
-        </Typography>
-                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                    Something here to give the footer a purpose!
-        </Typography>
-            </footer>
-            <AddProductDialog />
+            <AddProductDialog open={addProductDialogOpen} onClose={closeAddProduct} onAddProduct={onAddProductHandler} />
         </React.Fragment>
     );
 }

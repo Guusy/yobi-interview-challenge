@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
+import { addProduct } from '../actions'
 import Products from '../pages/products/ProductsPage';
 
 export const mapStateToProps = (state) => {
@@ -18,10 +17,8 @@ export const mapStateToProps = (state) => {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        getProducts: () => {
-            return dispatch({ type: "GET_PRODUCTS_REQUEST" })
-        }
-        // return bindActionCreators(, dispatch);
+        getProducts: () => dispatch({ type: "GET_PRODUCTS_REQUEST" }),
+        addProduct: (product) => dispatch(addProduct(product))
     }
 }
 

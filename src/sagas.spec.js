@@ -1,23 +1,8 @@
 import { getProducts } from './sagas';
 import ProductsService from './services/ProductsService';
 import { startFetching, finishFetching, setProducts, setError } from './actions';
-import { fork, take, call, takeEvery, put } from 'redux-saga/effects';
-jest.mock('./services/ProductsService', () => {
-    return {
-        getProducts: () => {
-            console.log("hello")
-            return Promise.resolve(
-                {
-                    response: {
-                        data: [{ id: 0 }]
-                    }
-                }).then(() => {
-                    console.log("pepita")
-                    return {}
-                })
-        }
-    }
-})
+import { call, put } from 'redux-saga/effects';
+
 describe('getProducts', () => {
     describe('when the service of get products responses ok', () => {
         let gen = getProducts();

@@ -16,6 +16,7 @@ const setup = (anotherProps = {}) => {
         spinner: wrapper.find(getDataTestSelector('spinner')),
         message: wrapper.find(getDataTestSelector('message')),
         product: wrapper.find('Connect(Product)'),
+        addProductButton: wrapper.find(getDataTestSelector('add-product-button')),
     };
 };
 
@@ -48,16 +49,16 @@ describe('ProductsPage', () => {
             expect(message.text()).toEqual(MessageValue)
         })
     })
-    /*describe('when click on add product button ', () => {
-        const { addProductButtom, wrapper } = setup()
+    describe('when click on add product button ', () => {
+        const { addProductButton, wrapper } = setup()
 
         beforeAll(() => {
-            addProductButtom.simulate('click')
+            addProductButton.simulate('click')
         })
         it('open the dialog ', () => {
             const muttedDialog = wrapper.find('AddProductDialog')
-         //   expect(muttedDialog.props().open).toBe(true)
+            expect(muttedDialog.props().open).toBe(true)
         })
-    })*/
+    })
 })
 
