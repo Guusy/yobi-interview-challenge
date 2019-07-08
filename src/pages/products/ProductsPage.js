@@ -50,6 +50,9 @@ function ProductsPage(props) {
   useEffect(() => {
     getProducts();
   }, []);
+  const closeAddProduct = () => {
+    setAddProductDialogOpen(false);
+  };
   const onAddProductHandler = (product) => {
     closeAddProduct();
     addProduct(product);
@@ -57,61 +60,59 @@ function ProductsPage(props) {
   const onClickAddProduct = () => {
     setAddProductDialogOpen(true);
   };
-  const closeAddProduct = () => {
-    setAddProductDialogOpen(false);
-  };
+
   return (
-        <React.Fragment>
-            <CssBaseline />
-            <AppBar position="relative">
-                <Toolbar>
-                    <Typography variant="h6" color="inherit" noWrap>
-                        Yobi
+    <React.Fragment>
+      <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            Yobi
           </Typography>
-                </Toolbar>
-            </AppBar>
-            <main>
-                <div className={classes.heroContent}>
-                    <Container maxWidth="sm">
-                        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                            Products Page
+        </Toolbar>
+      </AppBar>
+      <main>
+        <div className={classes.heroContent}>
+          <Container maxWidth="sm">
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+              Products Page
                         </Typography>
-                        <div className={classes.heroButtons}>
-                            <Grid container spacing={2} justify="center">
-                                <Grid item>
-                                    <Button variant="contained" color="primary" data-test="add-product-button" onClick={onClickAddProduct}>
-                                        Add product
+            <div className={classes.heroButtons}>
+              <Grid container spacing={2} justify="center">
+                <Grid item>
+                  <Button variant="contained" color="primary" data-test="add-product-button" onClick={onClickAddProduct}>
+                    Add product
                   </Button>
-                                </Grid>
-                                <Grid item>
-                                    <SearchTextfield></SearchTextfield>
-                                </Grid>
-                                <Grid item>
-                                    <SelectSort />
-                                </Grid>
+                </Grid>
+                <Grid item>
+                  <SearchTextfield></SearchTextfield>
+                </Grid>
+                <Grid item>
+                  <SelectSort />
+                </Grid>
 
-                            </Grid>
+              </Grid>
 
-                        </div>
-                    </Container>
-                </div>
-                <Container className={classes.cardGrid} maxWidth="md">
-                    <Grid container spacing={4} className={classes.cardGridContainer}>
+            </div>
+          </Container>
+        </div>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4} className={classes.cardGridContainer}>
 
-                        {products.map(product => <Product key={product.lotId} {...product} />)}
+            {products.map(product => <Product key={product.lotId} {...product} />)}
 
-                        {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
-                        {message
-                            && <Typography align="center" color="textPrimary" data-test="message">
-                                {message.value}
-                            </Typography>
-                        }
-                    </Grid>
+            {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
+            {message
+              && <Typography align="center" color="textPrimary" data-test="message">
+                {message.value}
+              </Typography>
+            }
+          </Grid>
 
-                </Container>
-            </main>
-            <AddProductDialog open={addProductDialogOpen} onClose={closeAddProduct} onAddProduct={onAddProductHandler} />
-        </React.Fragment>
+        </Container>
+      </main>
+      <AddProductDialog open={addProductDialogOpen} onClose={closeAddProduct} onAddProduct={onAddProductHandler} />
+    </React.Fragment>
   );
 }
 

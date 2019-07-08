@@ -10,7 +10,6 @@
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
     "axios": "^0.19.0",
-    "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.5",
     "babel-plugin-named-asset-import": "^0.3.2",
@@ -20,11 +19,9 @@
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",
     "dotenv-expand": "4.2.0",
-    "eslint": "^5.16.0",
     "eslint-config-react-app": "^4.0.1",
     "eslint-loader": "2.1.2",
     "eslint-plugin-flowtype": "2.50.1",
-    "eslint-plugin-import": "2.16.0",
     "eslint-plugin-jsx-a11y": "6.2.1",
     "eslint-plugin-react-hooks": "^1.5.0",
     "file-loader": "3.0.1",
@@ -68,12 +65,15 @@
     "workbox-webpack-plugin": "4.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.7.2",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react": "^7.14.2",
     "jest": "^24.8.0",
     "jest-enzyme": "^7.0.2",
     "redux-devtools-extension": "^2.13.8"
@@ -83,8 +83,7 @@
     "build": "node scripts/build.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "jest:init": "jest --init",
-    "lint": "eslint ./src/**"
+    "jest:init": "jest --init"
   },
   "browserslist": {
     "production": [

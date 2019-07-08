@@ -25,21 +25,21 @@ const SelectSort = (props) => {
     actionsMapper[value]();
   };
   return (
-        <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="sort-products">Sort by</InputLabel>
-            <Select
-                value={sort}
-                onChange={handleChange}
-                inputProps={{
-                  name: 'sort',
-                  id: 'sort-products',
-                }}
-                data-test="select-sort"
-            >
-                <MenuItem value='asc'>Asc</MenuItem>
-                <MenuItem value='desc'>Desc</MenuItem>
-            </Select>
-        </FormControl>
+    <FormControl className={classes.formControl}>
+      <InputLabel htmlFor="sort-products">Sort by</InputLabel>
+      <Select
+        value={sort}
+        onChange={handleChange}
+        inputProps={{
+          name: 'sort',
+          id: 'sort-products',
+        }}
+        data-test="select-sort"
+      >
+        <MenuItem value='asc'>Asc</MenuItem>
+        <MenuItem value='desc'>Desc</MenuItem>
+      </Select>
+    </FormControl>
   );
 };
 export default SelectSort;
