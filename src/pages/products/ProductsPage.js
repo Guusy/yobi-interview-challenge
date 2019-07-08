@@ -12,6 +12,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Product from './components/product/ProductContainer';
 import propTypes from 'prop-types';
 import SearchTextfield from './components/searchTextfield/SearchTextfieldContainer';
+import SelectSort from './components/selectSort/SelectSortContainer'
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -73,6 +74,10 @@ function ProductsPage(props) {
                                 <Grid item>
                                     <SearchTextfield></SearchTextfield>
                                 </Grid>
+                                <Grid item>
+                                    <SelectSort />
+                                </Grid>
+
                             </Grid>
 
                         </div>
