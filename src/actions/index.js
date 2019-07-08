@@ -5,6 +5,7 @@ import removeProduct from './removeProduct/removeProductAction'
 import searchProducts from './searchProducts/searchProductsAction'
 import sortProductsASC from './sortProducts/ASC/sortProductsASCAction'
 import sortProductsDESC from './sortProducts/DESC/sortProductsDESCAction'
+import setError from './setError/setErrorAction'
 export {
     setProducts,
     startFetching,
@@ -12,5 +13,6 @@ export {
     removeProduct,
     searchProducts,
     sortProductsASC,
-    sortProductsDESC
+    sortProductsDESC,
+    setError
 }

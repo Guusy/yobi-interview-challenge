@@ -1,18 +1,17 @@
 import { fork, take, call, takeEvery, put } from 'redux-saga/effects';
 import ProductsService from './services/ProductsService';
-import { setProducts, startFetching, finishFetching } from './actions'
+import { setProducts, startFetching, finishFetching, setError } from './actions'
 export function* getProducts() {
     yield put(startFetching);
 
-    const { response, error } = yield call(ProductsService.getProducts); 
+    const { response, error } = yield call(ProductsService.getProducts);
 
     yield put(finishFetching);
 
     if (response) {
         yield put(setProducts(response.data));
     } else {
-        // console.log("error", error)
-        // yield put(someErrorResponseActionHere());
+        yield put(setError);
     }
 
 }

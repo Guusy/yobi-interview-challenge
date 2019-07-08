@@ -48,5 +48,16 @@ describe('ProductsPage', () => {
             expect(message.text()).toEqual(MessageValue)
         })
     })
+    /*describe('when click on add product button ', () => {
+        const { addProductButtom, wrapper } = setup()
+
+        beforeAll(() => {
+            addProductButtom.simulate('click')
+        })
+        it('open the dialog ', () => {
+            const muttedDialog = wrapper.find('AddProductDialog')
+         //   expect(muttedDialog.props().open).toBe(true)
+        })
+    })*/
 })
 
