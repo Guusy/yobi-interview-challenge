@@ -2,16 +2,22 @@ import { connect } from 'react-redux';
 import { addProduct } from '../actions'
 import Products from '../pages/products/ProductsPage';
 
-export const mapStateToProps = (state) => {
-    const lowerCaseValue = state.searchValue.toLowerCase()
-    const products = state.products.filter(({ name }) => {
+export const mapStateToProps = ({ searchValue, products, isFetching, errorLoadingProducts }) => {
+    const lowerCaseValue = searchValue.toLowerCase()
+    const newProducts = products.filter(({ name }) => {
         const lowerCaseNameProduct = name.toLowerCase()
         return lowerCaseNameProduct.includes(lowerCaseValue)
     })
+    let message = (!isFetching && newProducts.length === 0) && ({ value: `Sorry there are no products with the name ${searchValue}` })
+    if (errorLoadingProducts) {
+        message = {
+            value: "Sorry, an error occurred while trying to recover the products"
+        }
+    }
     return {
-        isFetching: state.isFetching,
-        products,
-        message: (!state.isFetching && products.length === 0) && ({ value: `Sorry there are no products with the name ${state.searchValue}` })
+        isFetching: isFetching,
+        products: newProducts,
+        message
     };
 };
 

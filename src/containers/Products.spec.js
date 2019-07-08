@@ -11,6 +11,18 @@ describe('Products container', () => {
                 name: "Iphone 9 plus"
             }
         ]
+        describe('when has errorLoadingProducts', () => {
+            const state = {
+                searchValue: "",
+                products: basicProducts,
+                errorLoadingProducts: true
+            }
+            const { message } = mapStateToProps(state);
+
+            it('return a message like "Sorry, an error occurred while trying to recover the products"', () => {
+                expect(message).toEqual({ value: 'Sorry, an error occurred while trying to recover the products' })
+            })
+        })
         describe('when has a searchValue', () => {
             describe('and the value is in one of the names of the products', () => {
                 const state = {
