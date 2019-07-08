@@ -27,6 +27,15 @@ const useStyles = makeStyles(theme => ({
   },
   bulk: {
     display: 'flex'
+  },
+  retail: {
+    display: "flex"
+  },
+  iconLabel: {
+    marginRight: "0.5em"
+  },
+  cardActions: {
+    justifyContent: "flex-end"
   }
 
 }));
@@ -39,39 +48,34 @@ const Product = (props) => {
     onRemoveProduct(lotId);
   };
   return (
-        <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-                {/* <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                /> */}
-                <CardContent className={classes.cardContent}>
-                    <Typography data-test="name" gutterBottom variant="h5" component="h2">
-                        {name}
-                    </Typography>
-                    <div>
-                        <Typography data-test="type">
-                            {type}
-                        </Typography>
-                        <Typography className={classes.bulk}>
-                            Bulk  {hasBulk ? <CheckCircle data-test="has-bulk" /> : <HighlightOff data-test="hasnt-bulk" />}
-                        </Typography>
-                        <Typography className={classes.retail}>
-                            Retail  {hasRetail ? <CheckCircle data-test="has-retail" /> : <HighlightOff data-test="hasnt-retail" />}
-                        </Typography>
+    <Grid item xs={12} sm={6} md={4}>
+      <Card className={classes.card}>
+        <CardContent className={classes.cardContent}>
+          <Typography data-test="name" gutterBottom variant="h5" component="h2">
+            {name}
+          </Typography>
+          <div>
+            <Typography >
+              Type : <span data-test="type">{type} </span>
+            </Typography>
+            <Typography className={classes.bulk}>
+              <span className={classes.iconLabel}>Has Bulk</span>  {hasBulk ? <CheckCircle data-test="has-bulk" /> : <HighlightOff data-test="hasnt-bulk" />}
+            </Typography>
+            <Typography className={classes.retail}>
+              <span className={classes.iconLabel}>Has Retail</span>   {hasRetail ? <CheckCircle data-test="has-retail" /> : <HighlightOff data-test="hasnt-retail" />}
+            </Typography>
 
-                    </div>
+          </div>
 
-                </CardContent>
-                <CardActions>
-                    <Button size="small" color="secondary" data-test="remove-button" onClick={onRemoveHandler}>
-                        Remove
+        </CardContent>
+        <CardActions className={classes.cardActions} >
+          <Button size="small" color="secondary" data-test="remove-button" onClick={onRemoveHandler} cursor="pointer">
+            Remove
                     </Button>
 
-                </CardActions>
-            </Card>
-        </Grid>
+        </CardActions>
+      </Card>
+    </Grid>
   );
 };
 export default Product;

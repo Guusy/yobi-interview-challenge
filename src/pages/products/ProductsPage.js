@@ -27,17 +27,23 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
+    paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(8),
   },
   cardGridContainer: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: "2em"
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  addProduct: {
+    justifyContent: "flex-end",
+    display: "flex",
+    marginBottom: "1em"
+  }
 }));
 
 
@@ -78,12 +84,7 @@ function ProductsPage(props) {
               Products Page
                         </Typography>
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary" data-test="add-product-button" onClick={onClickAddProduct}>
-                    Add product
-                  </Button>
-                </Grid>
+              <Grid container spacing={2} justify="center" alignItems="center">
                 <Grid item>
                   <SearchTextfield></SearchTextfield>
                 </Grid>
@@ -97,17 +98,28 @@ function ProductsPage(props) {
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4} className={classes.cardGridContainer}>
+          <Grid item className={classes.addProduct}>
+            <Button variant="contained"
+              color="primary" data-test="add-product-button" onClick={onClickAddProduct}>
+              Add product
+            </Button>
+          </Grid>
+
+          <Grid container spacing={4} >
 
             {products.map(product => <Product key={product.lotId} {...product} />)}
 
+          </Grid>
+          <div className={classes.cardGridContainer}>
             {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
+
             {message
               && <Typography align="center" color="textPrimary" data-test="message">
                 {message.value}
               </Typography>
             }
-          </Grid>
+          </div>
+
 
         </Container>
       </main>

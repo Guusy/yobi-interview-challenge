@@ -18,6 +18,7 @@ export default function AddProductDialog(props) {
         hasBulk: false,
         hasRetail: false
     });
+   
     const onChangeInputHandler = ({ target: { value, id } }) => {
         setValues({ ...values, [id]: value });
     };
@@ -59,7 +60,7 @@ export default function AddProductDialog(props) {
                     autoFocus
                     margin="dense"
                     id="lotId"
-                    label="lot id"
+                    label="Lot id"
                     type="number"
                     fullWidth
                     onChange={onChangeInputHandler}
