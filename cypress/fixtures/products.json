@@ -1,0 +1,20 @@
+[
+  {
+    "name": "OG Kush",
+    "descripton": "This is a test description",
+    "type": "Indica",
+    "hasBulk": true,
+    "hasRetail": true,
+    "batchNumber": 12,
+    "lotId": 10
+  },
+  {
+    "name": "AK47",
+    "descripton": "This is a test description",
+    "type": "Hybrid",
+    "hasBulk": false,
+    "hasRetail": true,
+    "batchNumber": 234,
+    "lotId": 9
+  }
+]

@@ -4,17 +4,26 @@ import { getDataTestSelector } from '../../../src/utils/testUtils'
 describe('Load page succesful', () => {
     beforeEach(() => {
         cy.server()
-
-        cy.route('/products', [{ "name": "OG Kush", "descripton": "This is a test description", "type": "Indica", "hasBulk": true, "hasRetail": true, "batchNumber": 12, "lotId": 10 },
-        { "name": "AK47", "descripton": "This is a test description", "type": "Hybrid", "hasBulk": false, "hasRetail": true, "batchNumber": 234, "lotId": 9 }
-        ])
-        cy.visit('/products')
+        return cy.fixture('products').then(products => {
+            cy.route('/products', products)
+            cy.visit('/products')
+        })
     })
 
     it('render products', () => {
         cy.get(getDataTestSelector('name')).should('have.length', 2)
     })
+    describe('when search in a item', () => {
+        it('show only who matchs with the search', () => {
+            const searchName = 'Og'
+            cy.get(getDataTestSelector('text-field-product')).find('input').type(searchName)
+                .should('have.value', searchName)
+            const products = cy.get(getDataTestSelector('name'))
+            products.should('have.length', 1)
+            products.first().contains('OG Kush')
 
+        })
+    })
     it('remove items', () => {
         cy.get(getDataTestSelector('remove-button')).each(removeButton => {
             removeButton.click()
@@ -35,7 +44,7 @@ describe('Load page succesful', () => {
         cy.get(getDataTestSelector('lot-id-add-product')).find('input').type(lotId)
             .should('have.value', '10')
         cy.get(getDataTestSelector('button-add-product')).click()
-        
+
         cy.get(getDataTestSelector('name')).should('have.length', 3)
 
 

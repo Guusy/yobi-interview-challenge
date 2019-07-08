@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { addProduct } from '../actions';
-import Products from '../pages/products/ProductsPage';
+import { addProduct } from '../../actions';
+import ProductsPage from './ProductsPage';
 
 export const mapStateToProps = ({
   searchValue, products, isFetching, errorLoadingProducts
@@ -33,4 +33,4 @@ export function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Products);
+)(ProductsPage);

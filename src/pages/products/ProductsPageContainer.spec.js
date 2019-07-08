@@ -1,4 +1,4 @@
-import { mapStateToProps } from './Products';
+import { mapStateToProps } from './ProductsPageContainer';
 
 describe('Products container', () => {
   describe('mapStateToProps', () => {

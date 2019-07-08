@@ -9,7 +9,7 @@ import {
 import rootSaga from './sagas';
 import configureStore from './store';
 
-import Products from './containers/Products';
+import Products from './pages/products/ProductsPageContainer';
 
 
 const { store } = configureStore(
