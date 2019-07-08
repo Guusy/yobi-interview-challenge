@@ -14,7 +14,7 @@ const setup = (anotherProps = {}) => {
         wrapper,
         instance: wrapper.instance(),
         spinner: wrapper.find('[data-test="spinner"]'),
-        product: wrapper.find('Product'),
+        product: wrapper.find('Connect(Product)'),
     };
 };
 

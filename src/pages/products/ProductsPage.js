@@ -8,10 +8,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import ProductsService from '../../services/ProductsService';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Product from './components/product/ProductContainer';
 import propTypes from 'prop-types';
+import SearchTextfield from './components/searchTextfield/SearchTextfield';
+
 const useStyles = makeStyles(theme => ({
     icon: {
         marginRight: theme.spacing(2),
@@ -62,15 +63,14 @@ function ProductsPage(props) {
                             <Grid container spacing={2} justify="center">
                                 <Grid item>
                                     <Button variant="contained" color="primary">
-                                        Main call to action
+                                        Add item
                   </Button>
                                 </Grid>
                                 <Grid item>
-                                    <Button variant="outlined" color="primary">
-                                        Secondary action
-                         </Button>
+                                    <SearchTextfield></SearchTextfield>
                                 </Grid>
                             </Grid>
+
                         </div>
                     </Container>
                 </div>
