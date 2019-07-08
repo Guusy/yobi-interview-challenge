@@ -33,18 +33,18 @@ const useStyles = makeStyles(theme => ({
 const Product = (props) => {
 
     const classes = useStyles();
-    const { name, type, hasBulk, hasRetail,onRemoveProduct,lotId } = props
+    const { name, type, hasBulk, hasRetail, onRemoveProduct, lotId } = props
     const onRemoveHandler = () => {
         onRemoveProduct(lotId)
     }
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
-                <CardMedia
+                {/* <CardMedia
                     className={classes.cardMedia}
                     image="https://source.unsplash.com/random"
                     title="Image title"
-                />
+                /> */}
                 <CardContent className={classes.cardContent}>
                     <Typography data-test="name" gutterBottom variant="h5" component="h2">
                         {name}

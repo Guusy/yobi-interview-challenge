@@ -4,9 +4,9 @@ import Search from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
 
 const SearchTextfield = (props) => {
-    const [product, setProduct] = useState('')
-    const onChange = ({ target: { value } }) => {
-        setProduct(value)
+    const { onChange, value } = props;
+    const onChangeHandler = ({ target: { value } }) => {
+        onChange(value)
     }
     return <Grid container spacing={1} alignItems="flex-end">
         <Grid item>
@@ -19,8 +19,8 @@ const SearchTextfield = (props) => {
                     id="input-with-icon-grid"
                     label="Product name"
                     autoComplete="off"
-                    onChange={onChange}
-                    value={product}
+                    onChange={onChangeHandler}
+                    value={value}
                 />
             </form>
         </Grid>

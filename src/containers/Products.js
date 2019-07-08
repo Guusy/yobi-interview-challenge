@@ -3,10 +3,15 @@ import { bindActionCreators } from 'redux';
 
 import Products from '../pages/products/ProductsPage';
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
+    const lowerCaseValue = state.searchValue.toLowerCase()
+    const products = state.products.filter(({ name }) => {
+        const lowerCaseNameProduct = name.toLowerCase()
+        return lowerCaseNameProduct.includes(lowerCaseValue)
+    })
     return {
         isFetching: state.isFetching,
-        products: state.products
+        products
     };
 };
 

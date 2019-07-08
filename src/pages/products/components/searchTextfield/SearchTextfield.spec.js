@@ -21,16 +21,22 @@ const setup = (anotherProps = {}) => {
 
 describe('SearchTextfield', () => {
 
+    describe('when pass value', () => {
+        const aValue = "hello"
+        const { TextField } = setup({ value: aValue })
+        it('pass to the textfield', () => {
+            expect(TextField.props().value).toEqual(aValue)
+        })
+    })
     describe('when write in input', () => {
-        const { wrapper, TextField } = setup()
+        const onChangeSpy = jest.fn();
+        const { TextField } = setup({ onChange: onChangeSpy })
         const newValue = "text"
         beforeAll(() => {
             TextField.simulate('change', { target: { value: newValue } })
         })
-        it('render the new value', () => {
-            const muttedTextfield = wrapper.find(textFieldSelector)
-            console.log(wrapper.debug())
-            expect(muttedTextfield.props().value).toEqual(newValue)
+        it('call onChange prop with the value', () => {
+            expect(onChangeSpy).toBeCalledWith(newValue)
         })
     })
 })

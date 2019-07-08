@@ -11,7 +11,7 @@ import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Product from './components/product/ProductContainer';
 import propTypes from 'prop-types';
-import SearchTextfield from './components/searchTextfield/SearchTextfield';
+import SearchTextfield from './components/searchTextfield/SearchTextfieldContainer';
 
 const useStyles = makeStyles(theme => ({
     icon: {
