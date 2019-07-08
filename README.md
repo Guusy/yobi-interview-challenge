@@ -1,9 +1,18 @@
+# Yobi challenge
+
 ## Running the application
 
 ```bash
-$ yarn
 $ npm run start
 ```
+
+## Running test
+
+```bash
+$ npm run test
+```
+
+# Challenge information
 
 ## Configuration information
 
