@@ -28,6 +28,10 @@ const useStyles = makeStyles(theme => ({
         paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8),
     },
+    cardGridContainer: {
+        display: "flex",
+        justifyContent: "center"
+    },
     footer: {
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(6),
@@ -37,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 function ProductsPage(props) {
     const classes = useStyles();
-    const { getProducts, isFetching, products } = props
+    const { getProducts, isFetching, products, message } = props
 
     useEffect(() => {
         getProducts()
@@ -75,12 +79,16 @@ function ProductsPage(props) {
                     </Container>
                 </div>
                 <Container className={classes.cardGrid} maxWidth="md">
-                    <Grid container spacing={4}>
+                    <Grid container spacing={4} className={classes.cardGridContainer}>
 
                         {products.map(product => <Product key={product.lotId} {...product} />)}
 
                         {isFetching && <CircularProgress data-test="spinner" className={classes.progress} />}
-
+                        {message &&
+                            <Typography align="center" color="textPrimary" data-test="message">
+                                {message.value}
+                            </Typography>
+                        }
                     </Grid>
 
                 </Container>

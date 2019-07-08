@@ -27,9 +27,13 @@ describe('Products container', () => {
                     searchValue: "2-12,.,o",
                     products: basicProducts
                 }
+                const { products, message } = mapStateToProps(state);
+
                 it('returns a empty array', () => {
-                    const { products } = mapStateToProps(state);
                     expect(products).toEqual([])
+                })
+                it('return a message like "Sorry there are no products with the name {value}"', () => {
+                    expect(message).toEqual({ value: `Sorry there are no products with the name ${state.searchValue}` })
                 })
             })
 

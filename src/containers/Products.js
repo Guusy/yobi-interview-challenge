@@ -11,7 +11,8 @@ export const mapStateToProps = (state) => {
     })
     return {
         isFetching: state.isFetching,
-        products
+        products,
+        message: (!state.isFetching && products.length === 0) && ({ value: `Sorry there are no products with the name ${state.searchValue}` })
     };
 };
 

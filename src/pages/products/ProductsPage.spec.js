@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductsPage from './ProductsPage';
 import { shallow } from 'enzyme';
-
+import { getDataTestSelector } from '../../utils/testUtils'
 const props = {};
 const setup = (anotherProps = {}) => {
     const newProps = {
@@ -13,7 +13,8 @@ const setup = (anotherProps = {}) => {
     return {
         wrapper,
         instance: wrapper.instance(),
-        spinner: wrapper.find('[data-test="spinner"]'),
+        spinner: wrapper.find(getDataTestSelector('spinner')),
+        message: wrapper.find(getDataTestSelector('message')),
         product: wrapper.find('Connect(Product)'),
     };
 };
@@ -39,5 +40,13 @@ describe('ProductsPage', () => {
             expect(spinner).toHaveLength(0);
         })
     });
+
+    describe('when pass a message', () => {
+        const MessageValue = "a empty message"
+        const { message } = setup({ message: { value: MessageValue } })
+        it('show it', () => {
+            expect(message.text()).toEqual(MessageValue)
+        })
+    })
 })
 
