@@ -56,7 +56,7 @@ const Product = (props) => {
           </Typography>
           <div>
             <Typography >
-              Type : <span data-test="type">{type} </span>
+              Type : <span data-test="type">{type}</span>
             </Typography>
             <Typography className={classes.bulk}>
               <span className={classes.iconLabel}>Has Bulk</span>  {hasBulk ? <CheckCircle data-test="has-bulk" /> : <HighlightOff data-test="hasnt-bulk" />}

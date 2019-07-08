@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,23 +7,24 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
+const initialState = {
+    name: '',
+    type: '',
+    lotId: '',
+    hasBulk: false,
+    hasRetail: false,
+}
 const isEmpty = value => value.length === 0;
 export default function AddProductDialog(props) {
-    const { open, onClose, onAddProduct } = props;
-    const [values, setValues] = useState({
-        name: '',
-        type: '',
-        lotId: '',
-        hasBulk: false,
-        hasRetail: false
-    });
-   
+    const { open, onClose, onAddProduct, } = props;
+    const [values, setValues] = useState(initialState);
+
     const onChangeInputHandler = ({ target: { value, id } }) => {
         setValues({ ...values, [id]: value });
     };
     const onConfirm = () => {
         onAddProduct(values);
+        setValues({ ...initialState })
     };
     const handleChange = ({ target: { checked, id } }) => {
         setValues({ ...values, [id]: checked });

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import AddProductDialog from './AddProductDialog';
 import { getDataTestSelector } from '../../../../utils/testUtils';
 
-const props = {};
+const props = { products: [] };
 const setup = (anotherProps = {}) => {
   const newProps = {
     ...props,
